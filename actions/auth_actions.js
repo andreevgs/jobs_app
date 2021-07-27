@@ -23,7 +23,10 @@ export const facebookLogin = () => async dispatch => {
 };
 
 const doFacebookLogin = async dispatch => {
-  let { type, token } = await Facebook.logInWithReadPermissionsAsync('196207057539134', {
+  await Facebook.initializeAsync({
+    appId: '647592736634926',
+  });
+  let { type, token } = await Facebook.logInWithReadPermissionsAsync({
     permissions: ['public_profile']
   });
 
