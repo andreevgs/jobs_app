@@ -36,6 +36,7 @@ class MapScreen extends Component {
 
   onButtonPress = () => {
     this.props.fetchJobs(this.state.region, () => {
+      console.log('poshel nahui')
       this.props.navigation.navigate('Deck');
     });
   }

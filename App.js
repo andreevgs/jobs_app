@@ -16,21 +16,22 @@ import {Provider} from "react-redux";
 const Tab = createBottomTabNavigator();
 const ReviewStack = createStackNavigator();
 
+const ReviewNavigator = () => {
+    return (
+        <ReviewStack.Navigator>
+            <ReviewStack.Screen name="Reviews" component={ReviewScreen}/>
+            <ReviewStack.Screen name="Details" component={SettingsScreen}/>
+        </ReviewStack.Navigator>
+    )
+}
+
 const TabNavigator = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Map" component={MapScreen}/>
             <Tab.Screen name="Deck" component={DeckScreen}/>
+            <Tab.Screen name="Review" component={ReviewNavigator}/>
         </Tab.Navigator>
-    )
-}
-
-const ReviewNavigator = () => {
-    return (
-        <ReviewStack.Navigator>
-            <ReviewStack.Screen name="Settings" component={ReviewScreen}/>
-            <ReviewStack.Screen name="Details" component={SettingsScreen}/>
-        </ReviewStack.Navigator>
     )
 }
 
@@ -38,13 +39,12 @@ export default function App() {
   return (
       <Provider store={store}>
           <NavigationContainer>
-              <Tab.Navigator>
+              <Tab.Navigator tabBarOptions={{ tabBarVisible: false }}>
                   <Tab.Screen name="Welcome" component={WelcomeScreen}/>
                   <Tab.Screen name="Auth" component={AuthScreen}/>
                   <Tab.Screen name="Main" component={TabNavigator}/>
               </Tab.Navigator>
           </NavigationContainer>
       </Provider>
-
   );
 }

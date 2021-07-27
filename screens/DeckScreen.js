@@ -40,7 +40,7 @@ class DeckScreen extends Component {
           <Text>{job.formattedRelativeTime}</Text>
         </View>
         <Text>
-          {job.snippet.replace(/<b>/g, '').replace(/<\/b/g, '')}
+          {job.snippet}
         </Text>
       </Card>
     );
@@ -84,7 +84,7 @@ const styles = {
 };
 
 function mapStateToProps({ jobs }) {
-  return { jobs: jobs.results };
+  return { jobs: jobs };
 }
 
 export default connect(mapStateToProps, actions)(DeckScreen);

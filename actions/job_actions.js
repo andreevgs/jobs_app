@@ -2,6 +2,64 @@ import axios from 'axios';
 import reverseGeocode from 'latlng-to-zip';
 import qs from 'qs';
 
+const data = [
+  {
+    jobkey: '11111',
+    jobtitle: 'Junior JS Developer',
+    company: 'Pragmatics, Inc',
+    longitude: -122,
+    latitude: 37,
+    latitudeDelta: 0.045,
+    longitudeDelta: 0.02,
+    formattedRelativeTime: '10 days ago',
+    snippet: 'aaaaaa aaa aaaaa aaaa aaaa aaaaa aaaa aaaa aaaa aaa'
+  },
+  {
+    jobkey: '11112',
+    jobtitle: 'Junior JS Developer',
+    company: 'Pragmatics, Inc',
+    longitude: -122,
+    latitude: 37,
+    latitudeDelta: 0.045,
+    longitudeDelta: 0.02,
+    formattedRelativeTime: '10 days ago',
+    snippet: 'aaaaaa aaa aaaaa aaaa aaaa aaaaa aaaa aaaa aaaa aaa'
+  },
+  {
+    jobkey: '11113',
+    jobtitle: 'Junior JS Developer',
+    company: 'Pragmatics, Inc',
+    longitude: -122,
+    latitude: 37,
+    latitudeDelta: 0.045,
+    longitudeDelta: 0.02,
+    formattedRelativeTime: '10 days ago',
+    snippet: 'aaaaaa aaa aaaaa aaaa aaaa aaaaa aaaa aaaa aaaa aaa'
+  },
+  {
+    jobkey: '11114',
+    jobtitle: 'Junior JS Developer',
+    company: 'Pragmatics, Inc',
+    longitude: -122,
+    latitude: 37,
+    latitudeDelta: 0.045,
+    longitudeDelta: 0.02,
+    formattedRelativeTime: '10 days ago',
+    snippet: 'aaaaaa aaa aaaaa aaaa aaaa aaaaa aaaa aaaa aaaa aaa'
+  },
+  {
+    jobkey: '11115',
+    jobtitle: 'Junior JS Developer',
+    company: 'Pragmatics, Inc',
+    longitude: -122,
+    latitude: 37,
+    latitudeDelta: 0.045,
+    longitudeDelta: 0.02,
+    formattedRelativeTime: '10 days ago',
+    snippet: 'aaaaaa aaa aaaaa aaaa aaaa aaaaa aaaa aaaa aaaa aaa'
+  }
+]
+
 import {
   FETCH_JOBS,
   LIKE_JOB,
@@ -23,16 +81,9 @@ const buildJobsUrl = (zip) => {
   return `${JOB_ROOT_URL}${query}`;
 };
 
-export const fetchJobs = (region, callback) => async (dispatch) => {
-  try {
-    let zip = await reverseGeocode(region);
-    const url = buildJobsUrl(zip);
-    let { data } = await axios.get(url);
-    dispatch({ type: FETCH_JOBS, payload: data });
-    callback();
-  } catch(e) {
-    console.error(e);
-  }
+export const fetchJobs = (region, callback) =>  (dispatch) => {
+    dispatch({ type: FETCH_JOBS, payload: data })
+    callback()
 };
 
 export const likeJob = (job) => {
